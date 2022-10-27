@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/26 08:30:27 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/10/27 11:37:00 by safoh        \___)=(___/                 */
+/*   Updated: 2022/10/27 15:22:40 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class Fixed {
 
 public:
     Fixed();
+    Fixed(const Fixed& f);
+    Fixed& operator=(const Fixed& f);
     ~Fixed();
     int getRawBits(void) const;
     void setRawBits(int const raw);
