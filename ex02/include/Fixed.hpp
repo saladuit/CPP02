@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/26 08:30:27 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/11/06 20:43:06 by safoh        \___)=(___/                 */
+/*   Updated: 2022/11/06 21:06:41 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ public:
     Fixed operator--(int n);
 
     static Fixed& min(Fixed& f1, Fixed& f2);
-    static Fixed& min(const Fixed& f1, const Fixed& f2);
+    static const Fixed& min(const Fixed& f1, const Fixed& f2);
     static Fixed& max(Fixed& f1, Fixed& f2);
-    static Fixed& max(const Fixed& f1, const Fixed& f2);
+    static const Fixed& max(const Fixed& f1, const Fixed& f2);
 
     ~Fixed();
 

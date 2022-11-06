@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/22 21:27:16 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/11/06 17:01:19 by safoh        \___)=(___/                 */
+/*   Updated: 2022/11/06 20:58:03 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,5 @@ int main(void)
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << Fixed::max(a, b) << std::endl;
-    return 0;
-    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-
     return 0;
 }

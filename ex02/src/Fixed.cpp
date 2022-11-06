@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/27 15:19:50 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/11/06 20:46:59 by safoh        \___)=(___/                 */
+/*   Updated: 2022/11/06 21:06:19 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,44 +127,48 @@ Fixed Fixed::operator++(int n)
 {
     Fixed tmp(*this);
 
-    (*this)++;
+    (void)n;
+    operator++();
     return (tmp);
 }
+
 Fixed& Fixed::operator--(void)
 {
     --(this->_fixedPoint);
     return (*this);
 }
+
 Fixed Fixed::operator--(int n)
 {
     Fixed tmp(*this);
 
-    (*this)--;
+    (void)n;
+    operator--();
     return (tmp);
 }
 
-static Fixed::Fixed& min(Fixed& f1, Fixed& f2)
+Fixed& Fixed::min(Fixed& f1, Fixed& f2)
 {
     if (f1 <= f2)
         return (f1);
     return (f2);
 }
 
-static Fixed::Fixed& min(const Fixed& f1, const Fixed& f2)
+const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2)
 {
     if (f1 <= f2)
         return (f1);
     return (f2);
 }
 
-static Fixed::Fixed& max(Fixed& f1, Fixed& f2)
+Fixed& Fixed::max(Fixed& f1, Fixed& f2)
 {
     if (f1 >= f2)
         return (f1);
     return (f2);
 }
 
-static Fixed::Fixed& max(const Fixed& f1, const Fixed& f2)
+const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2)
 {
     if (f1 >= f2)
         return (f1);
