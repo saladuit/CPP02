@@ -6,7 +6,7 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/27 15:19:50 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/11/06 16:11:22 by safoh        \___)=(___/                 */
+/*   Updated: 2022/11/06 18:37:43 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int Fixed::getRawBits(void) const
     std::cout << "getRawBits member function called" << std::endl;
     return (_fixedPoint);
 }
+
 int Fixed::toInt(void) const
 {
     return ((int)(roundf((float)_fixedPoint / (1 << _fractionalBits))));
@@ -58,10 +59,107 @@ float Fixed::toFloat(void) const
 {
     return ((float)_fixedPoint / (1 << _fractionalBits));
 }
+
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
     _fixedPoint = raw;
+}
+
+bool Fixed::operator>(const Fixed& f) const
+{
+    return (this->_fixedPoint > f._fixedPoint);
+}
+bool Fixed::operator<(const Fixed& f) const
+{
+    return (this->_fixedPoint < f._fixedPoint);
+}
+bool Fixed::operator>=(const Fixed& f) const
+{
+    return (this->_fixedPoint >= f._fixedPoint);
+}
+
+bool Fixed::operator<=(const Fixed& f) const
+{
+    return (this->_fixedPoint <= f._fixedPoint);
+}
+bool Fixed::operator==(const Fixed& f) const
+{
+    return (this->_fixedPoint == f._fixedPoint);
+}
+bool Fixed::operator!=(const Fixed& f) const
+{
+    return (this->_fixedPoint != f._fixedPoint);
+}
+
+Fixed Fixed::operator+(const Fixed& f) const
+{
+    return (Fixed(this->toFloat() + f.toFloat()));
+}
+Fixed Fixed::operator-(const Fixed& f) const
+{
+    return (Fixed(this->toFloat() - f.toFloat()));
+}
+Fixed Fixed::operator*(const Fixed& f) const
+{
+    return (Fixed(this->toFloat() * f.toFloat()));
+}
+Fixed Fixed::operator/(const Fixed& f) const
+{
+    return (Fixed(this->toFloat() / f.toFloat()));
+}
+
+Fixed Fixed::operator++(void)
+{
+    ++(this->_fixedPoint);
+    return (*this);
+}
+Fixed Fixed::operator++(int n)
+{
+    Fixed tmp(*this);
+
+    (*this)++;
+    return (tmp);
+}
+Fixed& Fixed::operator--(void)
+{
+    --(this->_fixedPoint);
+    return (*this);
+}
+Fixed& Fixed::operator--(int n)
+{
+    Fixed tmp(*this);
+
+    (*this)--;
+    return (tmp);
+}
+
+static Fixed::Fixed& min(Fixed& f1, Fixed& f2)
+{
+    if (f1 <= f2)
+        return (f1);
+    return (f2);
+}
+
+static Fixed::Fixed& min(const Fixed& f1, const Fixed& f2)
+{
+    if (f1 <= f2)
+        return (f1);
+    return (f2);
+}
+
+static Fixed::Fixed& max(Fixed& f1, Fixed& f2)
+{
+    if (f1 >= f2)
+        return (f1);
+    return (f2);
+}
+
+static Fixed::Fixed& max(const Fixed& f1, const Fixed& f2)
+{
+    if (f1 >= f2)
+        return (f1);
+    return (f2);
 }
 
 Fixed::~Fixed()
