@@ -6,11 +6,12 @@
 /*   By: safoh <safoh@student.codam.nl>             //   \ \ __| | | \ \/ /   */
 /*                                                 (|     | )|_| |_| |>  <    */
 /*   Created: 2022/09/27 15:19:50 by safoh        /'\_   _/`\__|\__,_/_/\_\   */
-/*   Updated: 2022/11/06 18:37:43 by safoh        \___)=(___/                 */
+/*   Updated: 2022/11/06 20:46:59 by safoh        \___)=(___/                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Fixed.hpp>
+#include <cmath>
 
 Fixed::Fixed()
     : _fixedPoint(0)
@@ -70,10 +71,12 @@ bool Fixed::operator>(const Fixed& f) const
 {
     return (this->_fixedPoint > f._fixedPoint);
 }
+
 bool Fixed::operator<(const Fixed& f) const
 {
     return (this->_fixedPoint < f._fixedPoint);
 }
+
 bool Fixed::operator>=(const Fixed& f) const
 {
     return (this->_fixedPoint >= f._fixedPoint);
@@ -83,10 +86,12 @@ bool Fixed::operator<=(const Fixed& f) const
 {
     return (this->_fixedPoint <= f._fixedPoint);
 }
+
 bool Fixed::operator==(const Fixed& f) const
 {
     return (this->_fixedPoint == f._fixedPoint);
 }
+
 bool Fixed::operator!=(const Fixed& f) const
 {
     return (this->_fixedPoint != f._fixedPoint);
@@ -96,24 +101,28 @@ Fixed Fixed::operator+(const Fixed& f) const
 {
     return (Fixed(this->toFloat() + f.toFloat()));
 }
+
 Fixed Fixed::operator-(const Fixed& f) const
 {
     return (Fixed(this->toFloat() - f.toFloat()));
 }
+
 Fixed Fixed::operator*(const Fixed& f) const
 {
     return (Fixed(this->toFloat() * f.toFloat()));
 }
+
 Fixed Fixed::operator/(const Fixed& f) const
 {
     return (Fixed(this->toFloat() / f.toFloat()));
 }
 
-Fixed Fixed::operator++(void)
+Fixed& Fixed::operator++(void)
 {
     ++(this->_fixedPoint);
     return (*this);
 }
+
 Fixed Fixed::operator++(int n)
 {
     Fixed tmp(*this);
@@ -126,7 +135,7 @@ Fixed& Fixed::operator--(void)
     --(this->_fixedPoint);
     return (*this);
 }
-Fixed& Fixed::operator--(int n)
+Fixed Fixed::operator--(int n)
 {
     Fixed tmp(*this);
 
