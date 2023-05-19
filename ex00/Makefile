@@ -10,14 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-include makerc/colours.mk
+include makerc/common.mk
 include makerc/config.mk
 
-NAME			:=fixed.out
+NAME			:=ClapTrap.out
 
-################################################################################
+# **************************************************************************** #
 
 all: $(NAME)
+.PHONY: all
 
 $(NAME): SHELL :=/bin/bash
 
@@ -25,7 +26,7 @@ $(NAME): $(OBJS) $(MAIN_OBJ)
 	$(CC) $(CFLAGS) $^ $(INCLUDE_FLAGS) -o $(NAME)
 	@printf "$(GREEN_FG)$(NAME)$(RESET_COLOR) created\n"
 
-$(MAIN_OBJ) $(OBJS): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(HEADER)
+$(MAIN_OBJ) $(OBJS): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE_FLAGS) -c $< -o $@
 
@@ -33,28 +34,31 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	@$(RM) $(OBJS) $(MAIN_OBJ)
+	@$(RM) $(BUILD_DIR)
+.PHONY: clean
 
 fclean: clean
-	@$(RM) $(NAME) $(BUILD_DIR)
+	@$(RM) $(NAME)
+.PHONY: fclean
 
-re: fclean
-	@$(MAKE)
+re: fclean all
+.PHONY: re
 
 debug:
 	@$(MAKE) DEBUG=1
+.PHONY: debug
 
-rebug: fclean
-	@$(MAKE) debug
+rebug: fclean debug
+.PHONY: rebug
 
 fsan:
 	@$(MAKE) FSAN=1
+.PHONY: fsan
 
-resan: fclean
-	@$(MAKE) fsan
+resan: fclean fsan
+.PHONY: resan
 
 bonus: all
+.PHONY: bonus
 
-.PHONY: all clean fclean re debug rebug fsan resan
-
-################################################################################
+# **************************************************************************** #
