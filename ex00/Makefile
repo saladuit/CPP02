@@ -10,10 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-include makerc/common.mk
+# include makerc/common.mk
 include makerc/config.mk
 
-NAME			:=ClapTrap.out
+NAME			:=fixed.out
 
 # **************************************************************************** #
 

@@ -17,7 +17,7 @@ CC				:=c++
 RM				:=rm -rfv
 
 #	Compiler flags
-CFLAGS			=-Wall -Wextra -Werror -Wpedantic -std=c++98 $(if $(FSAN), -g -fsanitize=address)$(if $(DEBUG), -g)
+CFLAGS			=-Wall -Wextra -Werror -Wpedantic -std=c++98
 
 
 SRCS			=Fixed.cpp
